@@ -7,7 +7,7 @@ from .api_service import apiService
 
 # Create your views here.
 def home(request):
-    return render(request, 'main/index.html')
+    return render(request, 'main/search.html')
 
 
 def search_games(request):
@@ -19,7 +19,7 @@ def search_games(request):
         api = apiService(client_id, access_token)
         games = api.search_games(query)
 
-    return render(request, 'main/index.html', {'games': games})
+    return render(request, 'main/search.html', {'games': games})
 
 
 def details(request):
