@@ -19,35 +19,63 @@ main {
     flex-direction: column;
 }
 
-#homepage-title {
-    font-size: 2.8em;
+.homepage-title {
+    font-size: 8em;
     margin: 20px;
+    margin-bottom: 40px;
+}
+
+
+/*Search.html*/
+.search-form{
+    display: flex;
+    justify-content: center;
+    width: 30%;
 }
 
 .search-input {
     border-radius: 60px;
-    font-size: 16px;
+    font-size: 24px;
     background-color: white;
     background-image: url('../images/searchicon.svg');
-    background-position: 95% center;
+    background-position: 98% center;
+    padding: 15px;
     background-repeat: no-repeat;
     background-size: 20px;
-    padding: 12px 100px 12px 20px;
+    width: 100%;
+}
+
+.search-container{
+    margin-top: 15%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    margin-top: 50px;
 }
 
 .card {
     display: flex;
-    margin: 20px;
     flex-direction: column;
     align-items: center;
     border-radius: 17px;
     background-color: #111111;
-    max-width: 352px;
+    max-width: 300px;
+    margin: 20px;
 }
 
 .card-thumbnail {
     border-radius: 15px 15px 0 0;
-    width: 300px;
+    width: 100%;
 }
 
 .card:hover {
@@ -57,4 +85,123 @@ main {
 
 .card-link {
     text-align: center;
+    width: 100%;
+}
+
+/*details.html*/
+.img-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.img-card img {
+    width: 100%;
+    max-width: 600px;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.details-container {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 0 40px;
+}
+
+.details-title {
+    font-size: 2.7em;
+}
+
+.details-summary {
+    font-size: 1.4em;
+}
+
+.details-container p {
+    font-size: 1.3em;
+}
+
+.back-button {
+    padding: 10px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 5px;
+    margin-top: 90px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .homepage-title {
+        font-size: 3em;
+        margin: 20px;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .search-container{
+        margin-top: 0;
+    }
+
+    .details-title {
+        text-align: center;
+        font-size: 1.5em;
+    }
+
+    .details-summary {
+        font-size: 1em;
+    }
+
+    .page-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+    }
+
+    .details-container {
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+    }
+
+    .img-card {
+        align-items: center;
+        margin: 10px;
+        width: 80%;
+    }
+
+    .back-button {
+        margin-top: 30px;
+    }
+
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .card {
+        margin: 40px;
+    }
+
+    .homepage-title {
+        font-size: 2em;
+        margin: 20px;
+    }
+
+    .search-form{
+        width: 90%;
+    }
+
+    .search-input {
+        background-position: 94% center;
+        padding: 10px 15px;
+    }
 }

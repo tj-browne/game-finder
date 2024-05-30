@@ -1,12 +1,31 @@
 import requests
 
 
-# TODO: Move this function
 def get_covers(games, size='t_cover_big'):
     for game in games:
         if 'cover' in game and 'url' in game['cover']:
             if 't_thumb' in game['cover']['url']:
                 game['cover']['url'] = game['cover']['url'].replace('t_thumb', size)
+
+
+# TODO: Get Release Dates
+def get_release_dates(game_details):
+    pass
+
+
+# TODO: Get Genres
+def get_genres(game_details):
+    pass
+
+
+# TODO: Get Platforms
+def get_platforms(game_details):
+    pass
+
+
+# TODO: Get Involved Companies
+def get_companies(game_details):
+    pass
 
 
 class apiService:
@@ -21,8 +40,8 @@ class apiService:
             "Authorization": f"Bearer {self.access_token}",
         }
 
-    def get_request(self, data):
-        url = f"{self.base_url}/games"
+    def get_request(self, data, endpoint='games'):
+        url = f"{self.base_url}/{endpoint}"
         headers = self.get_headers()
         response = requests.post(url, headers=headers, data=data)
         response.raise_for_status()

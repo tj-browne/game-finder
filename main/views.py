@@ -27,4 +27,7 @@ def get_game_details(request, game_id):
     access_token = os.getenv('ACCESS_TOKEN')
     api = apiService(client_id, access_token)
     game_details = api.get_game_details(game_id)
-    return render(request, 'main/details.html', {'game_details': game_details})
+
+    referer = request.META.get('HTTP_REFERER', '/')
+
+    return render(request, 'main/details.html', {'game_details': game_details, 'referer': referer})
