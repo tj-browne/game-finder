@@ -22,5 +22,5 @@ def search_games(request):
     return render(request, 'main/search.html', {'games': games})
 
 
-def details(request):
+def get_details(request):
     return render(request, 'main/details.html')
