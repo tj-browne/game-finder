@@ -1,6 +1,7 @@
 import requests
 
 
+# TODO: Move this function
 def get_covers(games, size='t_cover_big'):
     for game in games:
         if 'cover' in game and 'url' in game['cover']:
@@ -20,24 +21,21 @@ class apiService:
             "Authorization": f"Bearer {self.access_token}",
         }
 
-    def search_games(self, query):
+    def get_request(self, data):
         url = f"{self.base_url}/games"
         headers = self.get_headers()
-        data = f'search "{query}"; fields name, cover.url, cover.image_id, id; limit 10;'
         response = requests.post(url, headers=headers, data=data)
         response.raise_for_status()
-        games = response.json()
+        return response.json()
+
+    def get_games(self, query):
+        data = f'search "{query}"; fields name, cover.url, cover.image_id, id; limit 10;'
+        games = self.get_request(data)
         get_covers(games)
         return games
 
-    # Search images (requires id of image from game)
-
-    # Search game details (name, description, release date, genres, platforms, Developer, Publisher, (Large game cover))
-    # (requires id of game???)
-    # def get_details(self, query):
-    #     url = f"{self.base_url}/games"
-    #     headers = self.get_headers()
-    #     data = f'search "{query}"; fields name, summary, release_dates, genres, platforms, involved_companies;'
-    #     response = requests.post(url, headers=headers, data=data)
-    #     response.raise_for_status()
-    #     return response.json()
+    def get_game_details(self, game_id):
+        data = f'fields name, summary, release_dates, genres, platforms, involved_companies, cover.url, cover.image_id, id; where id = {game_id};'
+        game_details = self.get_request(data)
+        get_covers(game_details, 't_cover_big_2x')
+        return game_details

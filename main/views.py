@@ -17,10 +17,14 @@ def search_games(request):
         client_id = os.getenv('CLIENT_ID')
         access_token = os.getenv('ACCESS_TOKEN')
         api = apiService(client_id, access_token)
-        games = api.search_games(query)
+        games = api.get_games(query)
 
     return render(request, 'main/search.html', {'games': games})
 
 
-def get_details(request):
-    return render(request, 'main/details.html')
+def get_game_details(request, game_id):
+    client_id = os.getenv('CLIENT_ID')
+    access_token = os.getenv('ACCESS_TOKEN')
+    api = apiService(client_id, access_token)
+    game_details = api.get_game_details(game_id)
+    return render(request, 'main/details.html', {'game_details': game_details})
