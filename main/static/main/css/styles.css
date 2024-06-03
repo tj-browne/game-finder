@@ -104,6 +104,7 @@ main {
 .img-card img {
     width: 100%;
     max-width: 600px;
+    margin: 0 40px;
 }
 
 .page-container {
@@ -117,13 +118,25 @@ main {
     display: flex;
     flex-direction: column;
     width: 40%;
-    margin: 0 40px;
+    padding: 5px;
+}
+
+.details-container h3{
+    margin: 0;
+}
+
+.details-container p{
+    margin-top: 2px;
+}
+
+.details-container span{
+    opacity: 0.4;
 }
 
 .details-title {
     font-size: 2.7em;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .details-summary {

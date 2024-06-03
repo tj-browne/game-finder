@@ -4,21 +4,10 @@ import requests
 def get_covers(game, size='t_cover_big'):
     if 'cover' in game and 'url' in game['cover']:
         game['cover']['url'] = game['cover']['url'].replace('t_thumb', size)
-
-
-# TODO: Get Screenshots (possible Details-container background)
-def get_screenshots(api, game_details):
-    screenshots = []
-    ids = game_details.get('screenshots', [])
-    print(game_details['screenshots'])
-    for id in ids:
-        data = f'fields url; where id = {id};'
-        screenshot = api.get_request(data, 'screenshots')
-        if screenshot:
-            screenshots.append(screenshot[0]['screenshots'])
-    # Join the genre names into a single string separated by commas
-    game_details['screenshots'] = ', '.join(screenshots)
-    print(game_details['screenshots'])
+    # if 'screenshots' in game:
+    #     for screenshot in game['screenshots']:
+    #         if 'url' in screenshot:
+    #             screenshot['url'] = screenshot['url'].replace('t_thumb', size)
 
 
 # TODO: (API Access Token)
@@ -49,9 +38,10 @@ class apiService:
         return games
 
     def get_game_details(self, game_id):
-        data = f'fields name, summary, release_dates.human, genres.name, platforms.name, involved_companies.company.name, cover.url, cover.image_id, id; where id = {game_id};'
+        data = (f'fields name, summary, release_dates.human, genres.name, platforms.name, '
+                f'involved_companies.company.name, cover.url, cover.image_id, id; where id = {
+                game_id};')
         game_details = self.get_request(data)
         game_details = game_details[0]
         get_covers(game_details, 't_cover_big_2x')
-        # get_screenshots(self, game_details)
         return game_details
