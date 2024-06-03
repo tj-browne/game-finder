@@ -4,13 +4,8 @@ import requests
 def get_covers(game, size='t_cover_big'):
     if 'cover' in game and 'url' in game['cover']:
         game['cover']['url'] = game['cover']['url'].replace('t_thumb', size)
-    # if 'screenshots' in game:
-    #     for screenshot in game['screenshots']:
-    #         if 'url' in screenshot:
-    #             screenshot['url'] = screenshot['url'].replace('t_thumb', size)
 
 
-# TODO: (API Access Token - Research)
 class apiService:
     def __init__(self, client_id, access_token):
         self.client_id = client_id

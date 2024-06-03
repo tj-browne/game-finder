@@ -47,21 +47,21 @@ main {
 
 /*TODO: Fix centering of div search-container with card-container (look at margins)*/
 .search-container {
-    margin-top: 15%;
-    margin-bottom: 5%;
+    margin-top: 30vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
-/*TODO: Center Cards*/
+
 .card-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     width: 90%;
-    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 3fr));
+    /*margin: 30px 20px;*/
+    margin-top: 90px;
+    gap: 20px;
 }
 
 .card {
@@ -70,13 +70,12 @@ main {
     align-items: center;
     border-radius: 17px;
     background-color: #111111;
-    max-width: 300px;
     margin: 20px;
-    height: 100%;
 }
 
-.card-title{
+.card-title {
     margin: 5px;
+    /*font-size: 1.2em;*/
 }
 
 .card-thumbnail {
@@ -121,15 +120,15 @@ main {
     padding: 5px;
 }
 
-.details-container h3{
+.details-container h3 {
     margin: 0;
 }
 
-.details-container p{
+.details-container p {
     margin-top: 2px;
 }
 
-.details-container span{
+.details-container span {
     opacity: 0.4;
 }
 
@@ -157,7 +156,7 @@ main {
     font-size: 1.3em;
 }
 
-.back-button:hover{
+.back-button:hover {
     color: #1E1E1E;
     background-color: #ffffff;
 }
