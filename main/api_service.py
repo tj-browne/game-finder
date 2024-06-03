@@ -10,7 +10,7 @@ def get_covers(game, size='t_cover_big'):
     #             screenshot['url'] = screenshot['url'].replace('t_thumb', size)
 
 
-# TODO: (API Access Token)
+# TODO: (API Access Token - Research)
 class apiService:
     def __init__(self, client_id, access_token):
         self.client_id = client_id
