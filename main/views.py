@@ -5,7 +5,7 @@ from django.shortcuts import render
 from .api_service import apiService
 
 
-# Create your views here.
+# TODO: Make home search games (placeholder) on start
 def home(request):
     return render(request, 'main/search.html')
 
@@ -27,7 +27,6 @@ def get_game_details(request, game_id):
     access_token = os.getenv('ACCESS_TOKEN')
     api = apiService(client_id, access_token)
     game_details = api.get_game_details(game_id)
-
     referer = request.META.get('HTTP_REFERER', '/')
 
     return render(request, 'main/details.html', {'game_details': game_details, 'referer': referer})

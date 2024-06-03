@@ -20,14 +20,18 @@
         </form>
     </div>
     <div class="card-container">
-    {% for game in games %}
-        <div class="card">
-            <a class="card-link" href="{% url 'details' game_id=game.id%}">
-                <img class="card-thumbnail" alt="{{ game.name }} cover" src="{{ game.cover.url }}">
-                <p class="card-title">{{ game.name }}</p>
-            </a>
-        </div>
-    {% endfor %}
+        {% for game in games %}
+            <div class="card">
+                <a class="card-link" href="{% url 'details' game_id=game.id %}">
+                    {% if game.cover and game.cover.url %}
+                        <img class="card-thumbnail" alt="{{ game.name }} cover" src="{{ game.cover.url }}">
+                    {% else %}
+                        <img class="card-thumbnail" alt="No cover available" src="{% static 'main/images/imagenotfound.png' %}">
+                    {% endif %}
+                    <p class="card-title">{{ game.name }}</p>
+                </a>
+            </div>
+        {% endfor %}
     </div>
 </main>
 </body>

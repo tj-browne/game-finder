@@ -8,7 +8,7 @@ body {
 
 a {
     text-decoration: none;
-    color: white;
+    color: #ffffff;
 }
 
 main {
@@ -27,7 +27,7 @@ main {
 
 
 /*Search.html*/
-.search-form{
+.search-form {
     display: flex;
     justify-content: center;
     width: 30%;
@@ -36,16 +36,17 @@ main {
 .search-input {
     border-radius: 60px;
     font-size: 24px;
-    background-color: white;
+    background-color: #ffffff;
     background-image: url('../images/searchicon.svg');
-    background-position: 98% center;
+    background-position: 97% center;
     padding: 15px;
     background-repeat: no-repeat;
     background-size: 20px;
     width: 100%;
 }
 
-.search-container{
+/*TODO: Fix centering of div search-container with card-container (look at margins)*/
+.search-container {
     margin-top: 15%;
     margin-bottom: 5%;
     display: flex;
@@ -54,7 +55,7 @@ main {
     align-items: center;
     width: 100%;
 }
-
+/*TODO: Center Cards*/
 .card-container {
     display: flex;
     flex-direction: row;
@@ -71,6 +72,11 @@ main {
     background-color: #111111;
     max-width: 300px;
     margin: 20px;
+    height: 100%;
+}
+
+.card-title{
+    margin: 5px;
 }
 
 .card-thumbnail {
@@ -80,7 +86,6 @@ main {
 
 .card:hover {
     opacity: 0.5;
-    cursor: pointer;
 }
 
 .card-link {
@@ -117,6 +122,8 @@ main {
 
 .details-title {
     font-size: 2.7em;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .details-summary {
@@ -129,11 +136,17 @@ main {
 
 .back-button {
     padding: 10px;
-    color: white;
-    border: 1px solid white;
+    color: #ffffff;
+    border: 1px solid #ffffff;
     border-radius: 5px;
     margin: 5px;
     margin-top: 90px;
+    font-size: 1.3em;
+}
+
+.back-button:hover{
+    color: #1E1E1E;
+    background-color: #ffffff;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -145,7 +158,7 @@ main {
 
 
 @media only screen and (max-width: 768px) {
-    .search-container{
+    .search-container {
         margin-top: 0;
     }
 
@@ -188,7 +201,7 @@ main {
     }
 
     .card {
-        margin: 40px;
+        margin: 30px;
     }
 
     .homepage-title {
@@ -196,7 +209,7 @@ main {
         margin: 20px;
     }
 
-    .search-form{
+    .search-form {
         width: 90%;
     }
 

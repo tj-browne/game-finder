@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Details</title>
+    <title>{{ game_details.name }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{% static 'main/images/favicon.ico' %}"/>
     <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
@@ -13,23 +13,43 @@
 </head>
 <body>
 <main>
-        <h1 class="homepage-title"><a href="{% url 'search' %}">Game Finder 🎮</a></h1>
-        {% for game_detail in game_details %}
+    <h1 class="homepage-title"><a href="{% url 'search' %}">Game Finder 🎮</a></h1>
+    {#TODO: Scroll down to page-container on search (Javascript probabaly)#}
     <div class="page-container">
-            <div class="img-card">
-                <img alt="{{ game_detail.name }} cover" src="{{ game_detail.cover.url }}">
-            </div>
-            <div class="details-container">
-                <h1 class="details-title">{{ game_detail.name }}</h1>
-                <p class="details-summary">Summary: {{ game_detail.summary }}</p>
-                <p>Release Dates: {{ game_detail.release_dates }}</p>
-                <p>Genres: {{ game_detail.genres }}</p>
-                <p>Platforms: {{ game_detail.platforms }}</p>
-                <p>Involved Companies: {{ game_detail.involved_companies }}</p>
-            </div>
-            </div>
-        {% endfor %}
-            <a class="back-button" href="{{ referer }}">Go Back</a>
+        {#TODO: Image not found error handling#}
+        <div class="img-card">
+            {% if game_details.cover and game_details.cover.url %}
+                <img alt="{{ game_details.name }} cover" src="{{ game_details.cover.url }}">
+            {% else %}
+                <img alt="No cover available" src="{% static 'main/images/imagenotfound.png' %}">
+            {% endif %}
+        </div>
+        <div class="details-container">
+            <h1 class="details-title">{{ game_details.name }}</h1>
+            <p class="details-summary">Summary: {{ game_details.summary }}</p>
+            <p>Release Dates:
+                {% for date in game_details.release_dates %}
+                    {{ date.human }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            <p>Genres:
+                {% for genre in game_details.genres %}
+                    {{ genre.name }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            <p>Platforms:
+                {% for platform in game_details.platforms %}
+                    {{ platform.name }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            <p>Developers/Publishers:
+                {% for company in game_details.involved_companies %}
+                    {{ company.company.name }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+    <a class="back-button" href="{{ referer }}">Go Back</a>
 </main>
 </body>
 </html>
