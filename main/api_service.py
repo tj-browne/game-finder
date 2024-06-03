@@ -26,7 +26,7 @@ class apiService:
         return response.json()
 
     def get_games(self, query):
-        data = f'search "{query}"; fields name, cover.url, id; limit 10;'
+        data = f'search "{query}"; fields name, cover.url, id; limit 40;'
         games = self.get_request(data)
         for game in games:
             get_covers(game)

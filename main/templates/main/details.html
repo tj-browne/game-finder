@@ -14,7 +14,6 @@
 <body>
 <main>
     <h1 class="homepage-title"><a href="{% url 'search' %}">Game Finder 🎮</a></h1>
-    {#TODO: (Optional) Scroll down to page-container on search (Javascript probably)#}
     <div class="page-container">
         <div class="img-card">
             {% if game_details.cover and game_details.cover.url %}
@@ -27,15 +26,14 @@
             <h1 class="details-title">{{ game_details.name }}</h1>
             <h3 class="details-summary">Summary:</h3>
             {% if not game_details.summary %}
-                <span>*No Summary Found*</span>
+                <p><span>*No Summary Found*</span></p>
             {% else %}
                 <p>{{ game_details.summary }}</p>
             {% endif %}
             <h3>Release Dates:</h3>
             {% if not game_details.release_dates %}
-                <span>*No Release Dates Found*</span>
+                <p><span>*No Release Dates Found*</span></p>
             {% else %}
-                {#TODO: Release dates still not fully accurate#}
                 {% if game_details.release_dates|length > 1 %}
                     <p>{{ game_details.release_dates.1.human }}</p>
                 {% else %}
@@ -43,35 +41,35 @@
                 {% endif %}
             {% endif %}
             <h3>Genres:</h3>
-            <p>
-                {% if not game_details.genres %}
-                    <span>*No Genres Found*</span>
-                {% else %}
+            {% if not game_details.genres %}
+                <p><span>*No Genres Found*</span></p>
+            {% else %}
+                <p>
                     {% for genre in game_details.genres %}
                         {{ genre.name }}{% if not forloop.last %}, {% endif %}
                     {% endfor %}
-                {% endif %}
-            </p>
+                </p>
+            {% endif %}
             <h3>Platforms:</h3>
-            <p>
-                {% if not game_details.platforms %}
-                    <span>*No Platforms Found*</span>
-                {% else %}
-                    {% for platform in game_details.platforms %}
-                        {{ platform.name }}{% if not forloop.last %}, {% endif %}
-                    {% endfor %}
-                {% endif %}
-            </p>
+            {% if not game_details.platforms %}
+                <p><span>*No Platforms Found*</span></p>
+            {% else %}
+                <p>
+                {% for platform in game_details.platforms %}
+                    {{ platform.name }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+                </p>
+            {% endif %}
             <h3>Developers/Publishers:</h3>
-            <p>
-                {% if not game_details.involved_companies %}
-                    <span>*No Developers/Publishers Found*</span>
-                {% else %}
-                    {% for company in game_details.involved_companies %}
-                        {{ company.company.name }}{% if not forloop.last %}, {% endif %}
-                    {% endfor %}
-                {% endif %}
-            </p>
+            {% if not game_details.involved_companies %}
+                <p><span>*No Developers/Publishers Found*</span></p>
+            {% else %}
+                <p>
+                {% for company in game_details.involved_companies %}
+                    {{ company.company.name }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+                </p>
+            {% endif %}
         </div>
     </div>
     <a class="back-button" href="{{ referer }}">Go Back</a>

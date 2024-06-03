@@ -5,7 +5,6 @@ from django.shortcuts import render
 from .api_service import apiService
 
 
-# TODO: (Optional) Make home search games (placeholder) on start
 def home(request):
     return render(request, 'main/search.html')
 

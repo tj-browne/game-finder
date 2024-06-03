@@ -4,8 +4,9 @@ body {
     font-family: "Montserrat Alternates", sans-serif;
     width: 100%;
     margin: 0;
+    scrollbar-gutter: stable both-edges;
 }
-
+/* TODO: Try different fonts */
 a {
     text-decoration: none;
     color: #ffffff;
@@ -47,7 +48,7 @@ main {
 
 /*TODO: Fix centering of div search-container with card-container (look at margins)*/
 .search-container {
-    margin-top: 30vh;
+    margin-top: 25vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -60,7 +61,7 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 3fr));
     /*margin: 30px 20px;*/
-    margin-top: 90px;
+    margin-top: 150px;
     gap: 20px;
 }
 
@@ -153,7 +154,7 @@ main {
     border-radius: 5px;
     margin: 5px;
     margin-top: 90px;
-    font-size: 1.3em;
+    font-size: 1.4em;
 }
 
 .back-button:hover {
