@@ -14,7 +14,7 @@
 <body>
 <main>
     <h1 class="homepage-title"><a href="{% url 'search' %}">Game Finder 🎮</a></h1>
-    {#TODO: Scroll down to page-container on search (Javascript probably)#}
+    {#TODO: (Optional) Scroll down to page-container on search (Javascript probably)#}
     <div class="page-container">
         <div class="img-card">
             {% if game_details.cover and game_details.cover.url %}
@@ -32,15 +32,16 @@
                 <p>{{ game_details.summary }}</p>
             {% endif %}
             <h3>Release Dates:</h3>
-            <p>
-                {% if not game_details.release_dates %}
-                    <span>*No Release Dates Found*</span>
+            {% if not game_details.release_dates %}
+                <span>*No Release Dates Found*</span>
+            {% else %}
+                {#TODO: Release dates still not fully accurate#}
+                {% if game_details.release_dates|length > 1 %}
+                    <p>{{ game_details.release_dates.1.human }}</p>
                 {% else %}
-                    {% for date in game_details.release_dates %}
-                        {{ date.human }}{% if not forloop.last %}, {% endif %}
-                    {% endfor %}
+                    <p>{{ game_details.release_dates.0.human }}</p>
                 {% endif %}
-            </p>
+            {% endif %}
             <h3>Genres:</h3>
             <p>
                 {% if not game_details.genres %}
