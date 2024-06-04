@@ -124,7 +124,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",  # Look for static files in the 'static' directory at the project level
+    BASE_DIR / "main/static",  # Look for static files in the 'static' directory at the project level
 ]
 
 # Default primary key field type
