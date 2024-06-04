@@ -1,12 +1,12 @@
 body {
     background-color: #1E1E1E;
     color: #ffffff;
-    font-family: "Montserrat Alternates", sans-serif;
+    font-family: "Montserrat", sans-serif;
     width: 100%;
     margin: 0;
     scrollbar-gutter: stable both-edges;
 }
-/* TODO: Try different fonts */
+
 a {
     text-decoration: none;
     color: #ffffff;
@@ -24,6 +24,7 @@ main {
     font-size: 8em;
     margin: 20px;
     margin-bottom: 40px;
+    font-family: "Montserrat Alternates", sans-serif;
 }
 
 
@@ -46,7 +47,6 @@ main {
     width: 100%;
 }
 
-/*TODO: Fix centering of div search-container with card-container (look at margins)*/
 .search-container {
     margin-top: 25vh;
     display: flex;
@@ -77,6 +77,7 @@ main {
 .card-title {
     margin: 5px;
     /*font-size: 1.2em;*/
+    font-weight: bold;
 }
 
 .card-thumbnail {
@@ -134,17 +135,13 @@ main {
 }
 
 .details-title {
-    font-size: 2.7em;
+    font-size: 3em;
     margin-top: 5px;
     margin-bottom: 10px;
 }
 
-.details-summary {
-    font-size: 1.4em;
-}
-
 .details-container p {
-    font-size: 1.3em;
+    font-size: 1.5em;
 }
 
 .back-button {
@@ -152,8 +149,8 @@ main {
     color: #ffffff;
     border: 1px solid #ffffff;
     border-radius: 5px;
-    margin: 5px;
-    margin-top: 90px;
+    margin-top: 50px;
+    margin-bottom: 20px;
     font-size: 1.4em;
 }
 
@@ -164,8 +161,41 @@ main {
 
 @media only screen and (max-width: 1200px) {
     .homepage-title {
-        font-size: 3em;
+        font-size: 4em;
         margin: 20px;
+    }
+
+    .details-container {
+        font-size: 80%;
+    }
+
+    .search-form {
+        width: 80%;
+    }
+
+    .page-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+    }
+
+    .details-container {
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+    }
+
+    .details-container h3 {
+        font-size: 1.7em;
+    }
+
+    .details-title {
+        text-align: center;
+        font-size: 3em;
+    }
+
+    .img-card img {
+        margin: 0;
     }
 }
 
@@ -182,18 +212,6 @@ main {
 
     .details-summary {
         font-size: 1em;
-    }
-
-    .page-container {
-        flex-direction: column;
-        align-items: center;
-        margin: 0;
-    }
-
-    .details-container {
-        align-items: center;
-        justify-content: center;
-        width: 90%;
     }
 
     .img-card {
@@ -218,7 +236,7 @@ main {
     }
 
     .homepage-title {
-        font-size: 2em;
+        font-size: 2.3em;
         margin: 20px;
     }
 
