@@ -19,6 +19,7 @@
         <form method="GET" class="search-form" action="">
             <input class="search-input" type="text" name="query" placeholder="Search...">
         </form>
+        <a class="credentials-link" href={% url 'credentials' %}>Set Credentials</a>
     </div>
     <div class="card-container">
         {% for game in games %}

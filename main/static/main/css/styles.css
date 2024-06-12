@@ -165,20 +165,22 @@ main {
     justify-content: space-between;
     gap: 5px;
     background-color: #111111;
-    padding: 50px 20px;
+    padding: 5px 50px;
     border-radius: 25px;
 }
 
 .credentials-form label{
-    font-size: 2em;
+    font-size: 1.8em;
 }
 
 .credentials-form h1{
     margin: 5px;
+    font-size: 2em;
 }
 
 .credentials-form input{
-    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .credentials-form button{
@@ -193,6 +195,15 @@ main {
 
 .credentials-form button:hover {
     color: #ffffff;
+    background-color: #111111;
+    cursor: pointer;
+}
+
+.credentials-link {
+    text-decoration: underline;
+    margin-top: 30px;
+    padding: 10px;
+    border-radius: 25px;
     background-color: #111111;
 }
 
@@ -241,6 +252,10 @@ main {
 @media only screen and (max-width: 768px) {
     .search-container {
         margin-top: 0;
+    }
+
+    .credentials-link{
+        margin-top: 18px;
     }
 
     .details-title {
