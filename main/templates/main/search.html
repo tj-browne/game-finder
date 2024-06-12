@@ -19,6 +19,11 @@
         <form method="GET" class="search-form" action="">
             <input class="search-input" type="text" name="query" placeholder="Search...">
         </form>
+        {% if error_message %}
+            <div class="error" role="alert">
+                {{ error_message }}
+            </div>
+        {% endif %}
         <a class="credentials-link" href={% url 'credentials' %}>Set Credentials</a>
     </div>
     <div class="card-container">

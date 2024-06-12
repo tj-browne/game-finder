@@ -159,7 +159,7 @@ main {
     background-color: #ffffff;
 }
 
-.credentials-form{
+.credentials-form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -169,21 +169,21 @@ main {
     border-radius: 25px;
 }
 
-.credentials-form label{
+.credentials-form label {
     font-size: 1.8em;
 }
 
-.credentials-form h1{
+.credentials-form h1 {
     margin: 5px;
     font-size: 2em;
 }
 
-.credentials-form input{
+.credentials-form input {
     padding: 10px;
     border-radius: 5px;
 }
 
-.credentials-form button{
+.credentials-form button {
     padding: 10px;
     color: #111111;
     border: 1px solid #ffffff;
@@ -205,6 +205,13 @@ main {
     padding: 10px;
     border-radius: 25px;
     background-color: #111111;
+}
+
+.error {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #FF000024;
+    font-size: 1.2em;
 }
 
 
@@ -254,8 +261,15 @@ main {
         margin-top: 0;
     }
 
-    .credentials-link{
+    .credentials-link {
         margin-top: 18px;
+    }
+
+    .credentials-form {
+        /*background-color: #1E1E1E;*/
+        padding: 5px 15px;
+        font-size: 0.9em;
+        width: 70%;
     }
 
     .details-title {

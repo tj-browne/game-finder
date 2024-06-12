@@ -15,12 +15,17 @@ def search_games(request):
         return redirect('credentials')
 
     query = request.GET.get('query')
+    error_message = None
     games = []
     if query:
-        api = apiService(request)
-        games = api.get_games(query)
+        try:
+            api = apiService(request)
+            games = api.get_games(query)
+        except Exception as e:
+            # API request errors
+            error_message = "Error fetching games. Please try again later or check API credentials."
 
-    return render(request, 'main/search.html', {'games': games})
+    return render(request, 'main/search.html', {'games': games, 'error_message': error_message})
 
 
 def get_game_details(request, game_id):
