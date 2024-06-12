@@ -1,6 +1,5 @@
 import os
 
-from django.contrib.sites import requests
 from django.shortcuts import render, redirect
 
 from .api_service import apiService
@@ -37,27 +36,9 @@ def set_credentials(request):
     if request.method == 'POST':
         form = CredentialsForm(request.POST)
         if form.is_valid():
-            client_id = form.cleaned_data['client_id']
-            access_token = form.cleaned_data['access_token']
-
-            # Attempt to make a request to the API using the provided credentials
-            api_url = 'ttps://api.igdb.com/v4'
-            headers = {'Authorization': f'Bearer {access_token}', 'Client-ID': client_id}
-            response = requests.get(api_url, headers=headers)
-
-            if response.status_code == 200:
-                # Credentials are valid, process them accordingly
-                return redirect('search')  # Redirect to a success page
-            else:
-                # Credentials are invalid, display an error message
-                error_message = "Invalid client ID or access token."
-                try:
-                    error_response = response.json()
-                    if 'error' in error_response:
-                        error_message = error_response['error']
-                except ValueError:
-                    pass  # Ignore if response is not JSON
-                form.add_error(None, error_message)
+            request.session['client_id'] = form.cleaned_data['client_id']
+            request.session['access_token'] = form.cleaned_data['access_token']
+            return redirect('search')
     else:
         form = CredentialsForm()
     return render(request, 'main/credentials.html', {'form': form, 'referer': referer})
