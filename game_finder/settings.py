@@ -30,8 +30,9 @@ SECRET_KEY = 'django-insecure-2iwfg#lh3xja!)hozy0k89c_bzf@d5eg!(acbi=!12t63abhnl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['game-finder-webapp-8f7ff9624137.herokuapp.com', 'your-custom-domain.com', '127.0.0.1']
+ALLOWED_HOSTS = ['game-finder-webapp-8f7ff9624137.herokuapp.com', '127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS = ['https://game-finder-webapp-8f7ff9624137.herokuapp.com']
 
 # Application definition
 
