@@ -7,11 +7,12 @@ def get_covers(game, size='t_cover_big'):
 
 
 class apiService:
+    # TODO: Add client secret to API Authentication
     def __init__(self, request):
         self.client_id = request.session.get('client_id')
         self.access_token = request.session.get('access_token')
         if not self.client_id or not self.access_token:
-            raise ValueError("Client ID and Access Token are required.")
+            raise ValueError("Invalid Client ID or Access Token.")
         self.base_url = 'https://api.igdb.com/v4'
 
     def get_headers(self):
