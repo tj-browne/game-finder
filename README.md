@@ -1,4 +1,4 @@
-# 🎮 game-finder
+# 🎮 [Game Finder](https://game-finder-webapp-8f7ff9624137.herokuapp.com/)
 Game Finder is a web application that allows users to search for and view details about video games. The application leverages the IGDB API to fetch comprehensive game data.
 
 ## Features:
@@ -29,4 +29,4 @@ To use the Game Finder application, you need to set up an account with the IGDB 
    - Go to the [Game Finder](https://game-finder-webapp-8f7ff9624137.herokuapp.com/).
    - Input your **Client ID** and **Client Secret** into the provided fields and hit **Save**.
 
-You are now ready to use the Game Finder web app!
+You are now ready to use Game Finder!
