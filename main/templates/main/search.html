@@ -31,9 +31,9 @@
             <div class="card">
                 <a class="card-link" href="{% url 'details' game_id=game.id %}">
                     {% if game.cover and game.cover.url %}
-                        <img class="card-thumbnail" alt="{{ game.name }} cover" src="{{ game.cover.url }}">
+                        <img class="card-thumbnail" alt="{{ game.name }} cover." src="{{ game.cover.url }}">
                     {% else %}
-                        <img class="card-thumbnail" alt="No cover available" src="{% static 'main/images/imagenotfound.png' %}">
+                        <img class="card-thumbnail" alt="No {{ game.name }} cover available." src="{% static 'main/images/imagenotfound.png' %}">
                     {% endif %}
                     <p class="card-title">{{ game.name }}</p>
                 </a>
