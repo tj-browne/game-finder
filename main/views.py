@@ -11,7 +11,7 @@ def home(request):
 
 
 def search_games(request):
-    if not request.session.get('client_id') or not request.session.get('access_token'):
+    if not request.session.get('client_id') or not request.session.get('client_secret'):
         return redirect('credentials')
 
     query = request.GET.get('query')
@@ -23,6 +23,7 @@ def search_games(request):
             games = api.get_games(query)
         except Exception as e:
             # API request errors
+            print(e)
             error_message = "Error fetching games. Please try again later or check API credentials."
 
     return render(request, 'main/search.html', {'games': games, 'error_message': error_message})
@@ -42,7 +43,8 @@ def set_credentials(request):
         form = CredentialsForm(request.POST)
         if form.is_valid():
             request.session['client_id'] = form.cleaned_data['client_id']
-            request.session['access_token'] = form.cleaned_data['access_token']
+            # request.session['access_token'] = form.cleaned_data['access_token']
+            request.session['client_secret'] = form.cleaned_data['client_secret']
             return redirect('search')
     else:
         form = CredentialsForm()
