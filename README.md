@@ -1,10 +1,14 @@
 # 🎮 game-finder
-A web application that allows users to search for and view details about video games. The application will use a game database API to fetch basic game data.
+Game Finder is a web application that allows users to search for and view details about video games. The application leverages the IGDB API to fetch comprehensive game data.
 
-## Setup:
-### Account Creation
-In order to use the IGDB API, you must have a Twitch Account.
+## Features:
+🔍 Search for video games by name
+📄 View detailed information about each game, including release dates, genres, and more
 
+## Getting Started:
+To use the Game Finder application, you need to set up an account with the IGDB API through Twitch. Follow the steps below to get started.
+
+### Setup:
 1. Sign Up with [Twitch](https://dev.twitch.tv/login) for a free account
 2. Ensure you have Two Factor Authentication [enabled](https://www.twitch.tv/settings/security)
 3. Register your application in the [Twitch Developer Portal](https://dev.twitch.tv/console/apps/create)
@@ -15,4 +19,4 @@ In order to use the IGDB API, you must have a Twitch Account.
 Once you have your Client ID and Client Secret go to: 
 https://game-finder-webapp-8f7ff9624137.herokuapp.com/
 And input your credentials into the provided fields and hit save.
-You now have access to game-finder web app!
+You are now ready to use the Game Finder web app!
