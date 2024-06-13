@@ -28,6 +28,7 @@ class apiService:
         response_data = response.json()
 
         if 'access_token' in response_data:
+            print(response_data)
             self.access_token = response_data['access_token']
         else:
             raise ValueError("Failed to authenticate. Check client credentials.")
