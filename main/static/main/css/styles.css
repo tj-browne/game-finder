@@ -163,24 +163,29 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 5px;
+    gap: 10px;
     background-color: #111111;
-    padding: 5px 50px;
+    padding: 20px 60px;
     border-radius: 25px;
 }
 
-.credentials-form label {
-    font-size: 1.8em;
+
+.credentials-form label{
+    font-size: 1.4em;
+    text-align: left;
+    padding: 10px 20px 0 4px;
 }
 
 .credentials-form h1 {
     margin: 5px;
-    font-size: 2em;
+    font-size: 2.6em;
+    padding: 5px;
+    text-align: center;
 }
 
 .credentials-form input {
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 25px;
 }
 
 .credentials-form button {
@@ -188,7 +193,7 @@ main {
     color: #111111;
     border: 1px solid #ffffff;
     border-radius: 5px;
-    margin-top: 50px;
+    margin-top: 40px;
     margin-bottom: 20px;
     font-size: 1.4em;
 }
@@ -269,7 +274,7 @@ main {
         /*background-color: #1E1E1E;*/
         padding: 5px 15px;
         font-size: 0.9em;
-        width: 70%;
+        width: 60%;
     }
 
     .details-title {
@@ -314,5 +319,11 @@ main {
     .search-input {
         background-position: 94% center;
         padding: 10px 15px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .homepage-title {
+        font-size: 1.7em;
     }
 }
