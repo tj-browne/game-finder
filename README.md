@@ -3,6 +3,7 @@ Game Finder is a web application that allows users to search for and view detail
 
 ## Features:
 🔍 Search for video games by name
+
 📄 View detailed information about each game, including release dates, genres, and more
 
 ## Getting Started:
