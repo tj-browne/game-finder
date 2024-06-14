@@ -19,7 +19,7 @@ To use the Game Finder application, you need to set up an account with the IGDB 
 3. **Register Your Application**
    - Visit the [Twitch Developer Portal](https://dev.twitch.tv/console/apps) and log in.
    - Click on **Register Your Application** and fill in the required details.
-   - After registering, navigate to the application you just created.
+   - After registering, click **Manage** on the application you just created.
 
 4. **Generate Client Credentials**
    - In your application's management page, click on **New Secret** to generate a Client Secret.
