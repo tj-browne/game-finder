@@ -1,6 +1,7 @@
 import os
 
 import requests
+from django.conf import settings
 
 from django.shortcuts import render, redirect
 
@@ -13,8 +14,8 @@ def home(request):
 
 
 def search_games(request):
-    if not request.session.get('client_id') or not request.session.get('client_secret'):
-        return redirect('credentials')
+    # if not request.session.get('client_id') or not request.session.get('client_secret') or not settings.CLIENT_ID or not settings.CLIENT_SECRET:
+    #     return redirect('credentials')
 
     query = request.GET.get('query')
     error_message = None
@@ -23,9 +24,12 @@ def search_games(request):
         try:
             api = apiService(request)
             games = api.get_games(query)
+        except KeyError as e:
+            print(f"KeyError: {e}")
+            error_message = "Error fetching games. Please try again later or check API credentials."
         except Exception as e:
             # API request errors
-            print(e)
+            print(f"Error: {e}")
             error_message = "Error fetching games. Please try again later or check API credentials."
 
     return render(request, 'main/search.html', {'games': games, 'error_message': error_message})

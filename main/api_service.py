@@ -1,4 +1,5 @@
 import requests
+from django.conf import settings
 
 
 def get_covers(game, size='t_cover_big'):
@@ -7,11 +8,13 @@ def get_covers(game, size='t_cover_big'):
 
 
 class apiService:
+
     def __init__(self, request):
-        self.client_id = request.session.get('client_id')
-        self.access_token = request.session.get('access_token')
-        self.client_secret = request.session.get('client_secret')
-        if not self.access_token:
+        self.client_id = settings.CLIENT_ID
+        self.client_secret = settings.CLIENT_SECRET
+        try:
+            self.access_token = request.session['access_token']
+        except KeyError:
             self.authenticate()
             request.session['access_token'] = self.access_token
         self.base_url = 'https://api.igdb.com/v4'
@@ -24,11 +27,10 @@ class apiService:
             'grant_type': 'client_credentials'
         }
         response = requests.post(auth_url, data=data)
-        response.raise_for_status()  # Raises an HTTPError if the HTTP request returned an unsuccessful status code
+        response.raise_for_status()
         response_data = response.json()
 
         if 'access_token' in response_data:
-            print(response_data)
             self.access_token = response_data['access_token']
         else:
             raise ValueError("Failed to authenticate. Check client credentials.")
