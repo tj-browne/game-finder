@@ -2,6 +2,7 @@ import os
 
 import requests
 from django.conf import settings
+from django.http import JsonResponse
 
 from django.shortcuts import render, redirect
 
@@ -14,7 +15,7 @@ def home(request):
 
 
 def search_games(request):
-    # if not request.session.get('client_id') or not request.session.get('client_secret') or not settings.CLIENT_ID or not settings.CLIENT_SECRET:
+    # if not request.session.get('client_id') or not request.session.get('client_secret'):
     #     return redirect('credentials')
 
     query = request.GET.get('query')
@@ -32,7 +33,12 @@ def search_games(request):
             print(f"Error: {e}")
             error_message = "Error fetching games. Please try again later or check API credentials."
 
-    return render(request, 'main/search.html', {'games': games, 'error_message': error_message})
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        # Return JSON response if the request is Ajax
+        return JsonResponse({'games': games, 'error_message': error_message})
+    else:
+        # Render the HTML template with data if it's a regular request
+        return render(request, 'main/search.html', {'games': games, 'error_message': error_message})
 
 
 def get_game_details(request, game_id):

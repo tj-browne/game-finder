@@ -21,7 +21,7 @@ main {
 }
 
 .homepage-title {
-    font-size: 8em;
+    font-size: 8.6em;
     margin: 20px;
     margin-bottom: 40px;
     font-family: "Montserrat Alternates", sans-serif;
@@ -33,11 +33,13 @@ main {
     display: flex;
     justify-content: center;
     width: 30%;
+    padding: 20px;
 }
 
 .search-input {
-    border-radius: 60px 0 0 60px;
+    /*border-radius: 60px 0 0 60px;*/
     font-size: 24px;
+    border-radius: 60px;
     background-color: #ffffff;
     padding: 15px;
     background-repeat: no-repeat;
@@ -82,7 +84,7 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 3fr));
     /*margin: 30px 20px;*/
-    margin-top: 150px;
+    margin-top: 100px;
     gap: 20px;
 }
 
@@ -243,7 +245,7 @@ main {
 
 @media only screen and (max-width: 1200px) {
     .homepage-title {
-        font-size: 4em;
+        font-size: 5em;
         margin: 20px;
     }
 
@@ -334,7 +336,7 @@ main {
     }
 
     .homepage-title {
-        font-size: 2.3em;
+        font-size: 3.6em;
         margin: 20px;
     }
 
@@ -348,8 +350,8 @@ main {
     }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 500px) {
     .homepage-title {
-        font-size: 1.7em;
+        font-size: 1.9em;
     }
 }
