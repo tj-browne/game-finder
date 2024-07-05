@@ -36,15 +36,28 @@ main {
 }
 
 .search-input {
-    border-radius: 60px;
+    border-radius: 60px 0 0 60px;
     font-size: 24px;
     background-color: #ffffff;
-    background-image: url('../images/searchicon.svg');
-    background-position: 97% center;
     padding: 15px;
     background-repeat: no-repeat;
     background-size: 20px;
-    width: 100%;
+    width: 80%;
+    border: none;
+}
+
+.search-button {
+    border-radius: 0 60px 60px 0;
+    background-color: #111111;
+    width: 10%;
+    background-image: url('../images/icons8-search.svg');
+    background-position: center;
+    background-size: 30px;
+    background-repeat: no-repeat;
+}
+
+.search-button:hover {
+    cursor: pointer;
 }
 
 .search-container {
@@ -170,7 +183,7 @@ main {
 }
 
 
-.credentials-form label{
+.credentials-form label {
     font-size: 1.4em;
     text-align: left;
     padding: 10px 20px 0 4px;
@@ -264,6 +277,11 @@ main {
 @media only screen and (max-width: 768px) {
     .search-container {
         margin-top: 0;
+    }
+
+    .search-button {
+        width: 20%;
+        background-size: 30px;
     }
 
     .credentials-link {
