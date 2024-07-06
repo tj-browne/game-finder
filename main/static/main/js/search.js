@@ -1,30 +1,40 @@
+const detailsUrlPattern = "/details/GAME_ID_PLACEHOLDER/";
+
 $(document).ready(function () {
-    $('.search-input').on('input', function (event) {
-        event.preventDefault();
-        const query = $(this).val().trim();
-
-        if (query === '') {
-            return;
+    $('.search-input').on('keydown', function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
         }
+    });
 
+    function debounce(func, delay) {
+        let timeout;
+        return function (...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), delay);
+        };
+    }
+
+    function performSearch(query) {
         $.ajax({
             type: 'GET',
-            url: "/",  // Adjust the URL if necessary
+            url: "/",
             data: {'query': query},
             dataType: 'json',
             success: function (response) {
                 $('.card-container').empty();
 
                 response.games.forEach(function (game) {
-                    // Construct the card HTML with data attributes for game details URL
+                    const detailUrl = detailsUrlPattern.replace('GAME_ID_PLACEHOLDER', game.id);
+                    let gameCover = defaultImageUrl;
+                    if (game.cover && game.cover.url) {
+                        gameCover = game.cover.url;
+                    }
+
                     const cardHtml = `
                         <div class="card">
-                            <a class="card-link" href="javascript:void(0);" 
-                               data-game-id="${game.id}" 
-                               data-detail-url="{% url 'details' game_id=game.id %}">
-                                <img class="card-thumbnail" 
-                                     src="${game.cover.url || '{% static "main/images/imagenotfound.png" %}'}" 
-                                     alt="${game.name} cover">
+                            <a class="card-link" href="javascript:void(0);" data-game-id="${game.id}" data-detail-url="${detailUrl}">
+                                <img class="card-thumbnail" src="${gameCover}" alt="${game.name} cover">
                                 <p class="card-title">${game.name}</p>
                             </a>
                         </div>
@@ -32,7 +42,6 @@ $(document).ready(function () {
                     $('.card-container').append(cardHtml);
                 });
 
-                // Set up click event for dynamic card links
                 $('.card-link').each(function () {
                     const detailUrl = $(this).data('detail-url');
                     $(this).on('click', function (event) {
@@ -40,11 +49,23 @@ $(document).ready(function () {
                         window.location.href = detailUrl;
                     });
                 });
+
+                $('html, body').animate({
+                    scrollTop: $('.homepage-title').offset().top
+                }, 700);
             },
             error: function (xhr, errmsg, err) {
                 console.error(errmsg);
                 $('.error-message').text('Error fetching games. Please try again later.').show();
             }
         });
-    });
+    }
+
+    $('.search-input').on('input', debounce(function (event) {
+        event.preventDefault();
+        const query = $(this).val().trim();
+        if (query !== '') {
+            performSearch(query);
+        }
+    }, 200));
 });

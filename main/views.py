@@ -34,10 +34,8 @@ def search_games(request):
             error_message = "Error fetching games. Please try again later or check API credentials."
 
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        # Return JSON response if the request is Ajax
         return JsonResponse({'games': games, 'error_message': error_message})
     else:
-        # Render the HTML template with data if it's a regular request
         return render(request, 'main/search.html', {'games': games, 'error_message': error_message})
 
 
@@ -59,17 +57,13 @@ def set_credentials(request):
             # request.session['access_token'] = form.cleaned_data['access_token']
             request.session['client_secret'] = form.cleaned_data['client_secret']
             try:
-                # Initialize apiService with the provided credentials
                 api = apiService(request)
-
-                # Authenticate to get the access token
                 api.authenticate()
 
-                # Store the access token in the session if authentication is successful
                 request.session['access_token'] = api.access_token
+
                 return redirect('search')
             except requests.exceptions.HTTPError:
-                # Extract error message
                 error_message = "Failed to authenticate. Check client credentials."
             except TypeError:
                 error_message = "Failed to authenticate. Check client credentials."

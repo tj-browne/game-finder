@@ -12,20 +12,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet">
+    <script>
+        const defaultImageUrl = "{% static 'main/images/imagenotfound.png' %}";
+    </script>
 </head>
 <body>
 <main>
-    <div class="search-container">
+    <p class="search-container">
         <h1 class="homepage-title"><a href="{% url 'search' %}">Game Finder 🎮</a></h1>
         <form method="GET" class="search-form" action="" autocomplete="off">
             <input class="search-input" type="text" name="query" placeholder="Search...">
             {#            <button class="search-button"></button>#}
         </form>
-        {% if error_message %}
-            <div class="error" role="alert">
-                {{ error_message }}
+{#        {% if error_message %}#}
+            <div class="error hidden" role="alert">
+{#                {{ error_message }}#}
             </div>
-        {% endif %}
+{#        {% endif %}#}
         {#        <a class="credentials-link" href={% url 'credentials' %}>Set API Credentials</a>#}
     </div>
     <div class="card-container">
