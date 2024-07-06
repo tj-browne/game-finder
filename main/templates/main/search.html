@@ -10,31 +10,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <script>
+        const defaultImageUrl = "{% static 'main/images/imagenotfound.png' %}";
+    </script>
 </head>
 <body>
 <main>
-    <div class="search-container">
+    <p class="search-container">
         <h1 class="homepage-title"><a href="{% url 'search' %}">Game Finder 🎮</a></h1>
-        <form method="GET" class="search-form" action="">
+        <form method="GET" class="search-form" action="" autocomplete="off">
             <input class="search-input" type="text" name="query" placeholder="Search...">
-            <button type="submit" class="search-button"></button>
+            {#            <button class="search-button"></button>#}
         </form>
-        {% if error_message %}
-            <div class="error" role="alert">
-                {{ error_message }}
+{#        {% if error_message %}#}
+            <div class="error hidden" role="alert">
+{#                {{ error_message }}#}
             </div>
-        {% endif %}
-        <a class="credentials-link" href={% url 'credentials' %}>Set API Credentials</a>
+{#        {% endif %}#}
+        {#        <a class="credentials-link" href={% url 'credentials' %}>Set API Credentials</a>#}
     </div>
     <div class="card-container">
         {% for game in games %}
             <div class="card">
-                <a class="card-link" href="{% url 'details' game_id=game.id %}">
+                <a class="card-link" href="#" data-game-id="{{ game.id }}"
+                   data-detail-url="{% url 'details' game_id=game.id %}">
                     {% if game.cover and game.cover.url %}
                         <img class="card-thumbnail" alt="{{ game.name }} cover." src="{{ game.cover.url }}">
                     {% else %}
-                        <img class="card-thumbnail" alt="No {{ game.name }} cover available." src="{% static 'main/images/imagenotfound.png' %}">
+                        <img class="card-thumbnail" alt="No {{ game.name }} cover available."
+                             src="{% static 'main/images/imagenotfound.png' %}">
                     {% endif %}
                     <p class="card-title">{{ game.name }}</p>
                 </a>
@@ -42,5 +48,7 @@
         {% endfor %}
     </div>
 </main>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'main/js/search.js' %}"></script>
 </body>
 </html>

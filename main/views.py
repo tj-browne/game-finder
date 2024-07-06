@@ -2,6 +2,7 @@ import os
 
 import requests
 from django.conf import settings
+from django.http import JsonResponse
 
 from django.shortcuts import render, redirect
 
@@ -14,7 +15,7 @@ def home(request):
 
 
 def search_games(request):
-    # if not request.session.get('client_id') or not request.session.get('client_secret') or not settings.CLIENT_ID or not settings.CLIENT_SECRET:
+    # if not request.session.get('client_id') or not request.session.get('client_secret'):
     #     return redirect('credentials')
 
     query = request.GET.get('query')
@@ -32,7 +33,10 @@ def search_games(request):
             print(f"Error: {e}")
             error_message = "Error fetching games. Please try again later or check API credentials."
 
-    return render(request, 'main/search.html', {'games': games, 'error_message': error_message})
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        return JsonResponse({'games': games, 'error_message': error_message})
+    else:
+        return render(request, 'main/search.html', {'games': games, 'error_message': error_message})
 
 
 def get_game_details(request, game_id):
@@ -53,17 +57,13 @@ def set_credentials(request):
             # request.session['access_token'] = form.cleaned_data['access_token']
             request.session['client_secret'] = form.cleaned_data['client_secret']
             try:
-                # Initialize apiService with the provided credentials
                 api = apiService(request)
-
-                # Authenticate to get the access token
                 api.authenticate()
 
-                # Store the access token in the session if authentication is successful
                 request.session['access_token'] = api.access_token
+
                 return redirect('search')
             except requests.exceptions.HTTPError:
-                # Extract error message
                 error_message = "Failed to authenticate. Check client credentials."
             except TypeError:
                 error_message = "Failed to authenticate. Check client credentials."
