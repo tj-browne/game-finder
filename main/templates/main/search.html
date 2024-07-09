@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Game Finder</title>
+    <meta name="description"
+          content="Find your next favorite game with Game-Finder! Search through a vast collection of games and discover the perfect match for your gaming preferences.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{% static 'main/images/favicon.ico' %}"/>
     <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
@@ -19,17 +21,17 @@
 <body>
 <main>
     <p class="search-container">
-        <h1 class="homepage-title"><a href="{% url 'search' %}">Game Finder 🎮</a></h1>
-        <form method="GET" class="search-form" action="" autocomplete="off">
-            <input class="search-input" type="text" name="query" placeholder="Search...">
-            {#            <button class="search-button"></button>#}
-        </form>
-{#        {% if error_message %}#}
-            <div class="error hidden" role="alert">
-{#                {{ error_message }}#}
-            </div>
-{#        {% endif %}#}
-        {#        <a class="credentials-link" href={% url 'credentials' %}>Set API Credentials</a>#}
+    <h1 class="homepage-title"><a href="{% url 'search' %}">Game Finder 🎮</a></h1>
+    <form method="GET" class="search-form" action="" autocomplete="off">
+        <input class="search-input" type="text" name="query" placeholder="Search...">
+        {#            <button class="search-button"></button>#}
+    </form>
+    {#        {% if error_message %}#}
+    <div class="error hidden" role="alert">
+        {#                {{ error_message }}#}
+    </div>
+    {#        {% endif %}#}
+    {#        <a class="credentials-link" href={% url 'credentials' %}>Set API Credentials</a>#}
     </div>
     <div class="card-container">
         {% for game in games %}
