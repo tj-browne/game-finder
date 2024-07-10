@@ -46,13 +46,15 @@ $(document).ready(function () {
                     const detailUrl = $(this).data('detail-url');
                     $(this).on('click', function (event) {
                         event.preventDefault();
+                        localStorage.setItem('scrollPosition', $(window).scrollTop());
+
                         window.location.href = detailUrl;
                     });
                 });
 
-                $('html, body').animate({
-                    scrollTop: $('.homepage-title').offset().top
-                }, 700);
+                // $('html, body').animate({
+                //     scrollTop: $('.homepage-title').offset().top
+                // }, 700);
             },
             error: function (xhr, errmsg, err) {
                 console.error(errmsg);
@@ -61,10 +63,30 @@ $(document).ready(function () {
         });
     }
 
+    function getQueryParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    const initialQuery = getQueryParameter('query');
+    if (initialQuery) {
+        $('.search-input').val(initialQuery);
+        performSearch(initialQuery);
+    }
+
+    const savedScrollPosition = localStorage.getItem('scrollPosition');
+    if (savedScrollPosition) {
+        $(window).scrollTop(savedScrollPosition);
+        localStorage.removeItem('scrollPosition'); // Clear the saved position
+    }
+
+
     $('.search-input').on('input', debounce(function (event) {
         event.preventDefault();
         const query = $(this).val().trim();
         if (query !== '') {
+            const newUrl = `${window.location.pathname}?query=${encodeURIComponent(query)}`;
+            history.pushState({path: newUrl}, '', newUrl)
             performSearch(query);
         }
     }, 200));
